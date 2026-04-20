@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>doro的书店</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+
+        /* 头部导航栏 */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* 主体容器 */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 150px 1fr 200px;
+            gap: 20px;
+        }
+
+        /* 左侧分类导航 */
+        .category-nav {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .category-nav h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .category-nav ul {
+            list-style: none;
+        }
+
+        .category-nav li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .category-nav li:hover {
+            color: #3498db;
+        }
+
+        /* 中间内容区 */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* 热门推荐 */
+        .hot-books {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .hot-books h3 {
+            grid-column: 1 / -1;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .book-card {
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .book-card.selected {
+            border: 2px solid #aed6f1;
+            background-color: #ebf5fb;
+        }
+
+        .book-card img {
+            width: 120px;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .book-price {
+            background-color: #000;
+            color: #fff;
+            padding: 5px;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .book-tag {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 2px 8px;
+            font-size: 12px;
+            border-radius: 2px;
+            float: right;
+        }
+
+        /* 新书上市表格 */
+        .new-books h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .new-books table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .new-books th, .new-books td {
+            border: 1px solid #333;
+            padding: 8px;
+        }
+
+        .new-books th {
+            background-color: #f8f9fa;
+        }
+
+        /* 右侧促销区 */
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .promo-banner {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .promo-text {
+            font-size: 16px;
+            text-align: center;
+        }
+
+        /* 右下角客服图标 */
+        .customer-service {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* 装饰性代码文字 */
+        .code-text {
+            color: #3498db;
+            font-family: monospace;
+            text-align: right;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="logo">
+            <img src="./img/logo.png" alt="logo">
+            <span>ljz的书店</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">图书分类</a></li>
+                <li><a href="#">热销推荐</a></li>
+                <li><a href="#">新书上市</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 主体 -->
+    <div class="container">
+        <!-- 左侧分类导航 -->
+        <aside class="category-nav">
+            <h3>图书分类导航</h3>
+            <ul>
+                <li>文学小说</li>
+                <li>科技计算机</li>
+                <li>经济管理</li>
+                <li>历史人文</li>
+                <li>少儿读物</li>
+            </ul>
+        </aside>
+
+        <!-- 中间内容 -->
+        <main class="main-content">
+            <!-- 热门推荐 -->
+            <section class="hot-books">
+                <h3>热门推荐</h3>
+                <div class="book-card">
+                    <img src="./img/1.png" alt="深入理解计算机系统">
+                    <div class="book-price">76.5 ¥ 下面是正文</div>
+                    <span class="book-tag">热销</span>
+                    <p>《css权威指南》</p>
+                </div>
+                <div class="book-card selected">
+                    <img src="./img/2.png" alt="算法导论">
+                    <div class="book-price">64.2 ¥ 限时折扣</div>
+                    <span class="book-tag">热卖</span>
+                    <p>《c++算法导论》</p>
+                </div>
+                <div class="book-card">
+                    <img src="./img/3.png" alt="数据结构与算法分析">
+                    <div class="book-price">65.3 ¥</div>
+                    <span class="book-tag">上新</span>
+                    <p>《web开发指南》</p>
+                </div>
+            </section>
+
+            <!-- 新书上市 -->
+            <section class="new-books">
+                <h3>新书上市</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>书名</th>
+                            <th>作者</th>
+                            <th>价格</th>
+                            <th>上架时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>《网页设计基础与实战》</td>
+                            <td>何勇 王瑶</td>
+                            <td>¥49.00</td>
+                            <td>2026-04-01</td>
+                        </tr>
+                        <tr>
+                            <td>《计算机组成原理》</td>
+                            <td>唐朔飞</td>
+                            <td>¥59.00</td>
+                            <td>2026-04-20</td>
+                        </tr>
+                        <tr>
+                            <td>《python教程》</td>
+                            <td>三剑客</td>
+                            <td>¥49.00</td>
+                            <td>2026-04-25</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <!-- 右侧促销 -->
+        <aside class="sidebar">
+            <h3>促销信息</h3>
+            <img class="promo-banner" src="./img/ad.png" alt="满199减50">
+            <p class="promo-text">全场满199减50!</p>
+        </aside>
+    </div>
+
+    <!-- 右下角客服 -->
+</body>
+</html>

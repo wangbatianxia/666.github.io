@@ -1,0 +1,128 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 头部区域 */
+.header {
+    position: fixed; /* 固定定位 */
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 10px 20px;
+}
+
+.logo {
+    float: left;
+}
+
+.nav {
+    float: right;
+}
+
+.nav ul {
+    list-style: none;
+}
+
+.nav ul li {
+    float: left;
+    margin-left: 20px;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #333;
+    cursor: pointer; /* pointer效果 */
+}
+
+/* 主体内容区 */
+.main {
+    margin-top: 80px; /* 避免被固定头部遮挡 */
+    overflow: hidden; /* 清除浮动 */
+}
+
+.left-sidebar {
+    float: left;
+    width: 20%;
+    padding: 20px;
+    background-color: #f5f5f5;
+    position: relative; /* 相对定位 */
+}
+
+.middle-content {
+    float: left;
+    width: 60%;
+    padding: 20px;
+}
+
+.right-sidebar {
+    position: fixed; /* 固定定位 */
+    top: 80px;
+    right: 0;
+    width: 20%;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+/* 图书展示区 */
+.book-list {
+    overflow: hidden;
+}
+
+.book-item {
+    float: left;
+    width: 48%;
+    margin: 1%;
+    text-align: center;
+    position: relative; /* 父相 */
+    cursor: pointer;
+}
+
+.book-detail {
+    position: absolute; /* 子绝 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    color: #fff;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-item:hover .book-detail {
+    display: flex; /* 鼠标悬停显示 */
+}
+
+/* 热门推荐 */
+.hot-recommend {
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.hot-item {
+    float: left;
+    width: 30%;
+    margin: 1.5%;
+    background-color: #f5f5f5;
+    padding: 10px;
+    text-align: center;
+}
+
+/* 新书上市表格 */
+.new-books {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.new-books th, .new-books td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
